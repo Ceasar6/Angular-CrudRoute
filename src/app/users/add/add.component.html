@@ -1,0 +1,66 @@
+<form (ngSubmit)="add()" [formGroup]="formAddUser">
+  <div class="form-group">
+    <label>ID</label>
+    <input type="text" formControlName="id" class="form-control">
+  </div>
+  <div *ngIf="id.invalid &&(id.touched)">
+    <div *ngIf="id.errors.required" class="alert alert-danger">
+      <p>
+        Trường không được để trống
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" formControlName="name" class="form-control">
+  </div>
+  <div *ngIf="name.invalid &&(name.touched)">
+    <div *ngIf="name.errors.required" class="alert alert-danger">
+      <p>
+        Trường không được để trống
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label> address</label>
+    <input type="email" formControlName="email" class="form-control">
+  </div>
+  <div *ngIf="email.invalid &&(email.touched)">
+    <div *ngIf="email.errors.required" class="alert alert-danger">
+      <p>
+        Trường không được để trống
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Address</label>
+    <input type="text" class="form-control" formControlName="address">
+  </div>
+  <div *ngIf="address.invalid &&(address.touched)">
+    <div *ngIf="address.errors.required" class="alert alert-danger">
+      <p>
+        Trường không được để trống
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Role</label>
+    <select class="form-control" formControlName="role">
+      <option *ngFor="let role of roles" value="{{role.id}}">{{role.name}}</option>
+    </select>
+  </div> <div *ngIf="role.invalid &&(role.touched)">
+  <div *ngIf="role.errors.required" class="alert alert-danger">
+    <p>
+      Trường không được để trống
+    </p>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-md-1">
+      <button class="btn btn-secondary" routerLink="/users">Close</button>
+    </div>
+    <div class="">
+      <button [disabled]="formAddUser.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
